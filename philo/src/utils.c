@@ -6,7 +6,7 @@
 /*   By: yara <yara@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 11:55:30 by yara              #+#    #+#             */
-/*   Updated: 2025/10/02 13:28:33 by yara             ###   ########.fr       */
+/*   Updated: 2025/10/02 13:32:51 by yara             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	ft_usleep(size_t ms) /* Recibe ms a "dormir" */
 /* guarda el tiempo actual en ms y lo resta por el inicio
 mientras sea menor a ls ms de la función sigue dormido */
 
-void	print_philos_routine(char *str, t_philo *philo, int id)
+void	print_routine(char *str, t_philo *philo, int id)
 {
 	size_t	time;
 
