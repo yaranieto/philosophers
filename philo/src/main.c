@@ -6,32 +6,11 @@
 /*   By: yara <yara@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 14:03:32 by ynieto-s          #+#    #+#             */
-/*   Updated: 2025/10/01 16:11:31 by yara             ###   ########.fr       */
+/*   Updated: 2025/10/02 12:51:48 by yara             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
-
-int	init_from_args(t_program *program, int argc, char **argv)
-{
-	t_init_args	args;
-
-	if (!valid_args(argc, argv))
-		return (1);
-	args.num_philos = ft_atol(argv[1]);
-	args.time_to_die = ft_atol(argv[2]);
-	args.time_to_eat = ft_atol(argv[3]);
-	args.time_to_sleep = ft_atol(argv[4]);
-	return (init_program(program, args));
-}
-
-static int	print_usage(char *prog_name)
-{
-	printf("Error: invalid number of arguments\n");
-	printf("Usage: %s num_philos time_to_die time_to_eat ", prog_name);
-	printf("time_to_sleep [num_meals]\n");
-	return (1);
-}
 
 int	main(int argc, char **argv)
 {
@@ -56,4 +35,38 @@ int	main(int argc, char **argv)
 	}
 	cleanup(&program);
 	return (0);
+}
+
+void	destroy_threads(char *st, t_program, pthread_mutex_t *fork)
+{
+	int	a;
+
+	a = 0;
+	if (str)
+	{
+		ft_error_print(str);
+		ft_error_print("\n");
+	}
+	pthread_mutex_destroy(&progam-dead_lock);
+	pthread_mutex_destroy(&program->write_lock);
+	pthread_mutex_destroy(&program->meal_lock);
+	while (a < program->philos[0].num_philosophers)
+	{
+		pthread_mutex_destroy(&fork[a]);
+		a++;
+	}
+}
+
+int	check_nbr_args(char **argv)
+{
+	if (ft_atol(argv[1]) <= 0 || ft_is_positive_number (argv[1]))
+		return (ft_error_printing("Invalid number of philosophers"));
+	if (ft_atol(argv[2]) <= 0 || ft_is_positive_number (argv[2]))
+		return (ft_error_printing("Invalid time to die"));
+	if (ft_atol(argv[3]) <= 0 || ft_is_positive_number (argv[3]))
+		return (ft_error_printing("Invalid time to eat"));
+	if (ft_atol(argv[4]) <= 0 || ft_is_positive_number(argv[4]) == 1)
+		return (ft_error_printing("Invalid sleep time\n"));
+	if (argv[5] && (ft_atol(argv[5]) < 0 || ft_is_positive_number(argv[5]) == 1))
+		return (ft_error_printing("Invalid meals\n"));
 }
